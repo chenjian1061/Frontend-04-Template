@@ -63,11 +63,32 @@ JS表达式
     * !a
     * await a
   * Exponental
-    * **
+    *  \*\*
     ```javascript
     3 ** 2 ** 3
     3 ** (2 ** 3)
     ```
+  * Multiplicative
+    * \* / %
+  * Additive
+    * + -
+  * Shift
+    * << >> >>>
+  * Relationship
+    * < > <= >= instanceof in 
+  * Equality
+    * ==
+    * !=
+    * ===
+    * !==
+  * Bitwise
+    * & ^ |
+  * Logical
+    * &&
+    * ||
+  * Conditional
+    * ?:
+    
 * Statement
 * Stucture
 * Program/Module
