@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+</head>
+<body>
+    <div id="chart" style="width:1000px;height:800px;"></div>
+</body>
+
+<script src='https://cdn.bootcdn.net/ajax/libs/echarts/4.8.0/echarts.min.js'></script>
+<script>
+   let objects = [
+        'eval',
+        'isFinite',
+        'isNaN',
+        'parseFloat',
+        'parseInt',
+        'decodeURI',
+        'decodeURIComponent',
+        'encodeURI',
+        'encodeURIComponent',
+        'Array',
+        'Date',
+        'RexExp',
+        'Promise',
+        'Proxy',
+        'Map',
+        'WeakMap',
+        'Set',
+        'WeakSet',
+        'Function',
+        'Boolean',
+        'String',
+        'Number',
+        'Symbol',
+        'Object',
+        'Error',
+        'EvalError',
+        'RangeError',
+        'ReferenceError',
+        'SyntaxError',
+        'TypeError',
+        'URIError',
+        'ArrayBuffer',
+        'sharedArrayBuffer',
+        'DataView',
+        'Float32Array',
+        'Float64Array',
+        'Int8Array',
+        'Int16Array',
+        'Int32Array',
+        'Uint8Array',
+        'Uint16Array',
+        'Uint32Array',
+        'Uint8ClampedArray',
+        'Atomics',
+        'JSON',
+        'Math',
+        'Reflect'
+    ]
+    let children = objects.map((el) => {
+        return {
+            name: el,
+            children: []
+        }
+    })
+
+    let data = {
+        name: 'realm',
+        children: children
+    }
+
+    let myChart = echarts.init(document.getElementById('chart'));
+    myChart.setOption(option = {
+        tooltip: {
+            trigger: 'item',
+            triggerOn: 'mousemove'
+        },
+        series: [
+            {
+                type: 'tree',
+                data: [data],
+                top: '1%',
+                left: '7%',
+                bottom: '1%',
+                right: '20%',
+                symbolSize: 7,
+                label: {
+                    position: 'left',
+                    verticalAlign: 'middle',
+                    align: 'right',
+                    fontSize: 9
+                },
+                leaves: {
+                    label: {
+                        position: 'right',
+                        verticalAlign: 'middle',
+                        align: 'left'
+                    }
+                },
+
+                expandAndCollapse: true,
+                animationDuration: 550,
+                animationDurationUpdate: 750
+            }
+        ]
+    });
+
+    let test = {
+        a: "aa",
+        b: "bb",
+        geta: function(){
+            return this.a;
+        }
+    }
+</script>

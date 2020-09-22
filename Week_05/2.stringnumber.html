@@ -1,0 +1,39 @@
+<script>
+    function StringToNumber(str, type) {
+        if (str == null || str == "") {
+            return 0;
+        }
+        if (!type) {
+            if (str.startsWith("0b") || str.startsWith("0B")) {
+                type = 2;
+                str = str.substr(2);
+            } else if (str.startsWith("0o") || str.startsWith("0O")) {
+                type = 8;
+                str = str.substr(2);
+            } else if (str.startsWith("0x") || str.startsWith("0X")) {
+                type = 16;
+                str = str.substr(2);
+            } else {
+                type = 10;
+            }
+        }
+        if (type === 2) {
+            return parseInt(str, 2);
+        } else if (type === 8) {
+            return parseInt(str, 8);
+        } else if (type === 16) {
+            return parseInt(str, 16);
+        } else {
+            return Number(str)
+        }
+    }
+
+    function NumberToString(num, type) {
+        if (!type) {
+            return "" + num
+        }
+
+        return num.toString(type)
+    }
+
+</script>
