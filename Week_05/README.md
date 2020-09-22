@@ -10,6 +10,20 @@ JS表达式
     * Left hand side & Right hand side
   * Runtime
     * Type Convertion
+      * a+b
+      * "false"==false
+      * a[o]=1;
+      
+      ||Number|String|Boolean|Undefined|Null|Object|Symbol
+      |-----|-----|-----|-----|-----|-----|-----|-----|
+      |Number|- | |0 false |X |X |Boxing |X |
+      |String| |- |"" false |X |X |Boxing |X |
+      |Boolean|true 1 false 0 |'true' 'false' |- |X |X |Boxing |X |
+      |Undefined|NaN |'Undefined' |false |- |X |X |X |
+      |Null|0 |'null' |false |X |- |X |X |
+      |Object|valueOf |valueOf toString |true |X |X |- |X |
+      |Symbol|X |X |X |X |X |Boxing |- |
+      
     * Reference
       * Ojbect
       * Key
