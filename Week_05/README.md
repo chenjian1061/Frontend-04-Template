@@ -24,6 +24,21 @@ JS表达式
       |Object|valueOf |valueOf toString |true |X |X |- |X |
       |Symbol|X |X |X |X |X |Boxing |- |
       
+    * Unboxing
+      * ToPremitive
+      * toString vs valueOf
+      * Symbol.toPrimitive
+      ```javascript
+      var o={
+       toString() { return "2" },
+       valueOf() { return 1 },
+       [Symbol.toPrimitive]() { return 3 }
+      }
+      
+      var x={}
+      x[o] = 1
+      console.log("x"+o)
+      ```
     * Reference
       * Ojbect
       * Key
@@ -104,5 +119,28 @@ JS表达式
     * ?:
     
 * Statement
+  * Grammar
+    * 简单语句
+      * ExpressionStatement
+      * EmptyStatement
+      * DebuggerStatement
+      * ThrowStatement
+      * ContinueStatement
+      * BreakStatement
+      * ReturnStatement
+    * 组合语句
+    * 声明
+  * Runtime
+    * Completion Record
+      * [[type]]: normal, break, continue, return, or throw
+      * [[value]]: 基本类型
+      * [[target]]: label 
+    ```javascript
+    if(x==1)
+      return 10;
+    \\我们需要一个数据结构来描述语句的执行结果：是否返回了？返回值是什么？等等......
+    ```
+     
+    * Lexical Environment
 * Stucture
 * Program/Module
