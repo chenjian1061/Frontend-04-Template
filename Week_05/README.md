@@ -233,4 +233,71 @@ JS表达式
      
     * Lexical Environment
 * Stucture
+	* 宏任务
+		```javascript
+		var x=1;
+		var p=new Promise(resolve => resolve());
+		p.then(() => x=3);
+		x=2;
+		```
+	* 微任务(Promise)
+	* 函数调用(Execution Context)
+		```javascript
+		import {foo} from "foo.js"
+		var i=0;
+		console.log(i);
+		foo();
+		console.log(i);
+		i++;
+		
+		// --------
+		import {foo2} from "foo.js"
+		var x=1;
+		function foo(){
+			console.log(x);
+			foo2();
+			console.log(x);
+		}
+		export foo;
+		
+		// --------
+		var y=2
+		function foo2(){
+			console.log(y);
+		}
+		export foo2;
+		```
+		* Execution Context
+			* code evaluation state
+			* Function
+			* Script or Module
+			* Generator
+			* Realm
+			* LexicalEnvironment
+				* this
+				* new.target
+				* super
+				* 变量
+			* VariableEnvironment
+				* VariableEnvironment是个历史遗留的包袱，仅仅用于处理var声明。
+				```javascript
+				{
+					let y=2;
+					eval('var x=1;');
+				}
+				
+				width({a:1}){
+					eval('var x;');
+				}
+				console.log(x);
+				```
+		* Environent Record
+			* Declarative Environment Records
+				* Function Environment Records
+				* module Environment Records
+			* Global Environment Records
+			* Object Environment Records
+	* 语句/声明(Completion Record)
+	* 表达式(Reference)
+	* 直接量/变量/this......
 * Program/Module
