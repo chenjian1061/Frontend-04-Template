@@ -199,6 +199,26 @@ JS表达式
           const a;
         }();
         console.log(a);
+								
+								// 作用域
+        var a = 2;
+        void function() {
+         a=1;
+									{
+										var a;
+									}
+        }();
+        console.log(a);
+        
+        
+        var a=2;
+        void function() {
+          a = 1;
+          {
+												const a;
+										}
+        }();
+        console.log(a);
       ```
   * Runtime
     * Completion Record
