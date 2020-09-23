@@ -128,8 +128,78 @@ JS表达式
       * ContinueStatement
       * BreakStatement
       * ReturnStatement
-    * 组合语句
+    * 复合语句
+      * BlockStatement
+        * [[type]]: normal
+        * [[value]]: --
+        * [[target]]: --
+        ```javascript
+        {
+        
+        }
+        ```
+      * IfStatement
+      * SwitchStatement
+      * IterationStatement
+        * while()
+        * do{} while()
+        * for( ; ; )
+        * for( in )
+        * for( of )
+        * for await( of )
+      * WithStatement
+      * LabelledStatement
+        * [[type]]: break continue
+        * [[value]]: --
+        * [[target]]: label
+      * TryStatement
+        * [[type]]: return
+        * [[value]]: --
+        * [[target]]: label
+        ```javascript
+        try {
+        
+        } catch() {
+        
+        } finally {
+        
+        }
+        ```
     * 声明
+      * FunctionDeclaration
+        * function
+      * GeneratorDeclaration
+        * function \*
+      * AsyncFunctionDeclaration
+        * async function
+      * AsyncGeneratorDeclaration
+        * async function \*
+      * VariableStatement
+        * var
+      * ClassDeclaration
+        * class
+      * LexicalDeclaration
+        * const
+        * let
+      ```javascript
+        // 预处理
+        var a = 2;
+        void function() {
+         a=1;
+         return;
+         var a;
+        }();
+        console.log(a);
+        
+        
+        var a=2;
+        void function() {
+          a = 1;
+          return;
+          const a;
+        }();
+        console.log(a);
+      ```
   * Runtime
     * Completion Record
       * [[type]]: normal, break, continue, return, or throw
@@ -138,7 +208,7 @@ JS表达式
     ```javascript
     if(x==1)
       return 10;
-    \\我们需要一个数据结构来描述语句的执行结果：是否返回了？返回值是什么？等等......
+      // 我们需要一个数据结构来描述语句的执行结果：是否返回了？返回值是什么？等等......
     ```
      
     * Lexical Environment
