@@ -1,0 +1,75 @@
+<script>
+    function match (str) {
+        if (!str) {
+            return false;
+        }
+
+        let state = start;
+        for (let char of str) {
+            state = state(char);
+        }
+        
+        return state === end;
+    }
+
+    function start(c) {
+        if (c === "a") {
+            return foundA1;
+        } else {
+            return start;
+        }
+    }
+
+    function end(c) {
+        return end;
+    }
+
+    function foundA1(c) {
+        if (c === "b") {
+            return foundB1;
+        } else {
+            return start(c);
+        }
+    } 
+
+    function foundB1(c) {
+        if (c === "a") {
+            return foundA2;
+        } else {
+            return start(c);
+        }
+    } 
+
+    function foundA2(c) {
+        if (c === "b") {
+            return foundB2;
+        } else {
+            return foundA1(c);
+        }
+    } 
+
+    function foundB2(c) {
+        if (c === "a") {
+            return foundA3;
+        } else {
+            return foundB1(c);
+        }
+    } 
+    function foundA3(c) {
+        if (c === "b") {
+            return foundB3;
+        } else {
+            return foundA2(c);
+        }
+    } 
+    function foundB3(c) {
+        if (c === "x") {
+            return end;
+        } else {
+            return foundB2(c);
+        }
+    } 
+
+    console.log(match("test ababababx word"));
+
+</script>

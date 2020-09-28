@@ -1,0 +1,16 @@
+<script>
+    function match (str, matchStr) {
+        if (!str) {
+            return false;
+        }
+
+        if (str.indexOf(matchStr) !== -1) {
+            return true;
+        }
+
+        return false;
+    }
+
+    console.log(match("test a word", "a"));
+
+</script>

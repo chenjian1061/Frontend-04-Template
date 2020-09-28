@@ -1,0 +1,26 @@
+<script>
+    function match (str) {
+        if (!str) {
+            return false;
+        }
+        let findStr = "abcdef";
+        let findIndex = 0;
+
+        for (let char of str) {
+            if (char === findStr[findIndex]) {
+                if (findIndex === 5) {
+                    return true
+                }
+
+                findIndex++;
+            } else {
+                findIndex = 0;
+            }
+        }
+        
+        return false;
+    }
+
+    console.log(match("test abcdef word"));
+
+</script>

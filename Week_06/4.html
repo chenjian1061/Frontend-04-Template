@@ -1,0 +1,24 @@
+<script>
+    function match (str) {
+        if (!str) {
+            return false;
+        }
+
+        let findFlag = false;
+
+        for (let char of str) {
+            if (char === "a") {
+                findFlag = true
+            } else if (findFlag && char === "b") {
+                return true
+            } else {
+                findFlag = false
+            }
+        }
+        
+        return false;
+    }
+
+    console.log(match("test ab word"));
+
+</script>
